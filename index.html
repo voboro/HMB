@@ -1,0 +1,55 @@
+
+var Age, bleeding, QoL, PersistentIMB, fertility, Hyst, Uterus, PE, FBC;
+
+/**
+ * Describe this function...
+ */
+function ConservRx() {
+  window.alert('Pharmaceutical Rx');
+  window.alert('Also second line Pharmaceutical Rx');
+  window.alert('Physical exam if not done yet');
+  window.alert('Consider imaging: first line USS');
+  window.alert('Provide information and discuss rx options');
+}
+
+/**
+ * Describe this function...
+ */
+function RxOptions() {
+  window.alert('Consider imaging (first line USS)');
+  window.alert('Provide info and discuss rx options');
+  if (QoL == 'y' && fertility == 'n' && Uterus == 'y') {
+    window.alert('Recommend Endometrial Ablation in view of combination of severe impact on QoL, no desire for fertillity and normal uterus (or fibroid <3cm)');
+  } else if (QoL == 'y' && Uterus == 'n') {
+    window.alert('Recommend Fibroid treatment: UAE, Myomectomy or Hysterectomy');
+  } else if (Hyst == 'y') {
+    window.alert('Recommend Hysterectomy');
+  } else {
+    window.alert('Surgical option not likely to be indicated');
+  }
+}
+
+
+Age = window.prompt('Is the age >45years?');
+bleeding = window.prompt('Is there IMB, PCB or erratic bleeding?');
+QoL = window.prompt('Impact on quality of life severe?');
+PersistentIMB = window.prompt('Is there persistent IMB or Rx failure or ineffective Rx');
+fertility = window.prompt('Any desire to conceive?');
+Hyst = window.prompt(['Has all rx other than hysterectomy has failed?','or no desire for menstruation, or to retain uterus or fertility','or fully informed patient requesting hysterectomy?'].join(''));
+PE = window.prompt('Any abnormality on PE  eg palpable uterus per abdomen or pelvic mass?');
+Uterus = window.prompt('Is uterus normal or <3cm fibroid?');
+FBC = window.prompt('Is the FBC normal?');
+if (bleeding == 'y') {
+  window.alert('Conduct physical examination');
+  if (PersistentIMB == 'y') {
+    window.alert('Consider Endometrial biopsy');
+  } else if (PE == 'n' && Uterus == 'y') {
+    ConservRx();
+    RxOptions();
+  } else if (PE == 'y' || Uterus == 'n') {
+    RxOptions();
+  }
+} else if (bleeding == 'n' && PE == 'n' && Uterus == 'y') {
+  ConservRx();
+  RxOptions();
+}
