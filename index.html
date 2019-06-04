@@ -46,7 +46,7 @@ Uterus = window.prompt('Is uterus normal or &lt 3cm fibroid?');
 FBC = window.prompt('Is the FBC normal?');
 if (bleeding == 'y') {
   window.alert('Conduct physical examination');
-  if (PersistentIMB == 'y') {
+  if (Age == 'y' || PersistentIMB == 'y') {
     window.alert('Consider Endometrial biopsy');
   } else if (PE == 'n' && Uterus == 'y') {
     ConservRx();
